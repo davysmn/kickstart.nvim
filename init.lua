@@ -353,11 +353,12 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
+          file_ignore_patterns = { 'node_modules' },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -575,8 +576,23 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
         --
+        tsserver = {
+          init_options = {
+            plugins = {
+              {
+                name = '@vue/typescript-plugin',
+                location = '/Users/davysmn/.nvm/versions/node/v20.11.1/lib/node_modules',
+                languages = { 'javascript', 'typescript', 'vue' },
+              },
+            },
+          },
+          filetypes = {
+            'javascript',
+            'typescript',
+            'vue',
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -652,6 +668,12 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        typescript = { { 'prettier', 'prettierd' } },
+        javascript = { { 'prettier', 'prettierd' } },
+        vue = { { 'prettier', 'prettierd' } },
+        css = { { 'prettier', 'prettierd' } },
+        scss = { { 'prettier', 'prettierd' } },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

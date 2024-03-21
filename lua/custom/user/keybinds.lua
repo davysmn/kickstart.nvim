@@ -14,3 +14,4 @@ vim.api.nvim_set_keymap('x', '<A-j>', ":move '>+1<CR>gv-gv", { noremap = true, s
 vim.api.nvim_set_keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>L', '<cmd>LazyGitCurrentFile<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>', '<cmd>:Neotree filesystem reveal toggle<CR>', { noremap = true, silent = true })
